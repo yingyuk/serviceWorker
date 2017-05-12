@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demo2 clients.claim()</title>
+</head>
+
+<body>
+  <p>第一次就是是 cat</p>
+  <p>通过clients.claim();实现</p>
+  <br>
+  <p> 但设置了 clients.claim() 后, 第一次的请求可能会被处理, </p>
+  <p> 之所以是`可能`; 是因为 请求需要在 clients.claim(); 运行之后 再能被处理 </p>
+  <script>
+  navigator.serviceWorker.register("/demo2/sw.js")
+    .then(reg => console.log("SW registered!", reg))
+    .catch(err => console.log("Boo!", err));
+
+  setTimeout(() => {
+    const img = new Image();
+    img.src = "/demo2/dog.svg";
+    document.body.appendChild(img);
+  }, 1000);
+  </script>
+</body>
+
+</html>
