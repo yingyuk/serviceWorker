@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "name": "service-worker",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yingyuk/serviceWorker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yingyuk/serviceWorker/issues"
+  },
+  "homepage": "https://github.com/yingyuk/serviceWorker#readme",
+  "description": ""
+}

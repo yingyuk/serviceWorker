@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demo1</title>
+</head>
+
+<body>
+  <p>第一次是 dog.svg, 刷新后是 cat.svg;</p>
+  <p>使用无痕浏览器模式,效果更佳</p>
+  <p>调试面板下 Application/Service Workers/ 下调试</p>
+  <p>或者打开 chrome://serviceworker-internals/ 进行调试</p>
+  <br>
+  <p>第一次的请求不会被 SW 处理, 哪怕设置了延时, demo2 进行处理</p>
+  <script>
+  navigator.serviceWorker.register("/demo1/sw.js")
+    .then(reg => console.log("SW registered!", reg))
+    .catch(err => console.log("Boo!", err));
+
+  setTimeout(() => {
+    const img = new Image();
+    img.src = "/demo1/dog.svg";
+    document.body.appendChild(img);
+    // 第一次的请求不会被 SW 处理, 哪怕设置了延时,
+  }, 1000);
+  </script>
+</body>
+
+</html>
