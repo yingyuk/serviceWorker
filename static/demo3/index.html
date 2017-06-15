@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>demo3 clients.claim()</title>
+</head>
+<style>
+img {
+  width: 10px;
+}
+</style>
+
+<body>
+  <script>
+  navigator.serviceWorker.register("/demo3/sw.js")
+    .then(reg => console.log("SW registered!", reg))
+    .catch(err => console.log("Boo!", err));
+
+  setTimeout(() => {
+    const img = new Image();
+    img.src = "/demo3/dog.svg";
+    document.body.appendChild(img);
+  }, 1000);
+  </script>
+</body>
+
+</html>

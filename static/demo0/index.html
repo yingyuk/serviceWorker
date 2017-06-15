@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demo0</title>
+</head>
+
+<body>
+  <script>
+  if ('serviceWorker' in navigator) {
+    const swConfig = {
+      scope: './',
+    };
+    // 注册 serviceWorker
+    navigator.serviceWorker.register("/demo0/sw.js")
+      .then(registration => {
+        /**
+         * registration 的三个状态, Boolean
+         */
+        registration.installing;
+        registration.waiting;
+        registration.active;
+        let serviceWorker;
+        if (registration.installing) {
+          serviceWorker = registration.installing;
+        } else if (registration.waiting) {
+          serviceWorker = registration.waiting;
+        } else if (registration.active) {
+          serviceWorker = registration.active;
+        }
+        if (serviceWorker) {
+          console.info(serviceWorker.state);
+          serviceWorker.addEventListener('statechange', function(e) {
+            console.info(e.target.state);
+          });
+        }
+        console.log("SW registered!", registration);
+        /**
+         * 手动更新 SW, 每次刷新页面, 打开页面都会 更新 SW
+         * 非必须, 会导致
+         */
+        registration.update();
+      })
+      .catch(err => console.log("Boo!", err));
+  } else {
+    // The current browser doesn't support service workers.
+  }
+  </script>
+</body>
+
+</html>
